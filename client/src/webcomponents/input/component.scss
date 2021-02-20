@@ -1,0 +1,49 @@
+$size: 1.5em;
+* {
+    box-sizing: border-box;
+}
+
+main {
+    height: $size;
+    margin-top: $size;
+    position: relative;
+    border-bottom: 1px solid #CCCCCC;
+    transition: .3s;
+    .line {
+        border-bottom: 1px solid;
+        display: inline-block;
+        transition: .3s;
+        width: 0%;
+        position: absolute;
+        bottom: 0;
+    }
+    .label,
+    .value {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        padding-left: .25em;
+    }
+    .label {
+        transition: .3s;
+    }
+    .value {
+        overflow: hidden;
+        white-space: nowrap;
+        outline: none;
+    }
+    &.titled {
+        border-bottom: 1px solid transparent;
+        .label {
+            opacity: .8;
+            transform: translateY(-70%) translateX(-10%) scale(.8);
+        }
+        .line {
+            width: 100%;
+        }
+    }
+}

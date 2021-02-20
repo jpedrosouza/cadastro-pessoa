@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>Teste API</title>
+</head>
+
+<body>
+    Abra o console do browser para executar os testes:
+    <pre>
+        await buscarPessoas();
+        await adicionarPessoa({nome: "João Pedro", sobrenome: "Souza", apelido: "Buzininha"});
+        await buscarPessoa(43);
+        await alterarPessoa(43, {nome: "João Pedro", sobrenome: "Souza", apelido: "Buzininha"});
+        await excluirPessoa(43);
+      </pre>
+    <script>
+        const host = "http://localhost:8081";
+
+        async function buscarPessoas() {
+            const configReq = {
+                method: "get"
+            };
+            const req = await fetch(host + "/pessoa")
+            const res = await req.json();
+            return res;
+        }
+
+        async function adicionarPessoa(dadosDePessoa) {
+            const configReq = {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dadosDePessoa)
+            };
+            const req = await fetch(host + "/pessoa", configReq);
+            const res = await req.json();
+            return res;
+        }
+
+        async function buscarPessoa(id) {
+            const configReq = {
+                method: "get"
+            };
+            const req = await fetch(host + "/pessoa/" + id)
+            const res = await req.json();
+            return res;
+        }
+
+        async function alterarPessoa(id, dadosDePessoa) {
+            const configReq = {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dadosDePessoa)
+            };
+            const req = await fetch(host + "/pessoa/" + id, configReq);
+            const res = await req.json();
+            return res;
+        }
+
+        async function excluirPessoa(id) {
+            const configReq = {
+                method: "delete"
+            };
+            const req = await fetch(host + "/pessoa/" + id, configReq);
+            const res = await req.json();
+            return res;
+        }
+    </script>
+</body>
+
+</html>

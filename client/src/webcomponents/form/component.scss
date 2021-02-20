@@ -1,0 +1,27 @@
+main {
+    .button-bar {
+        display: flex;
+        justify-content: flex-end;
+        button {
+            $color: #3FAF4B;
+            background: $color;
+            border: 2px solid darken($color: $color, $amount: 4);
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            margin: 1em 0;
+            padding: .25em 1em;
+            &.delete {
+                $color: #EB1A30;
+                background: $color;
+                border: 2px solid darken($color: $color, $amount: 4);
+            }
+            &:disabled {
+                $color: #dddddd;
+                background: $color;
+                border: 2px solid darken($color: $color, $amount: 4);
+                cursor: not-allowed;
+            }
+        }
+    }
+}
